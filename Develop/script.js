@@ -5,60 +5,72 @@ var currentTime = dayjs().format('hh:mm:ss');
 $('#currentTime').text(currentTime);
 console.log("Current Time" + currentTime);
 
-// var time = $(this).siblings(".hour").text();
-
 $('body').css('margin-bottom', '50px');
-var scheduleTime = $().siblings('.hour').text().split['hour'];
-console.log(scheduleTime)
 
 var timeBlock = $('.time-block');
-
-function checkHour(){
-var timeB = $('.time-block');
-var timeNow = dayjs().hour();
-console.log(timeNow)
-for(var i = 0; i < timeB.length; i ++){
-  console.log(timeB[i]);
-  var timeDiv = timeB[i];
-  var scheduleTime = parseInt($(timeDiv).attr('id').split('-')[1]);
-  console.log(isNaN(currentTime))
-  
-  
-  if(timeNow > scheduleTime) {
-    console.log(timeNow, scheduleTime)
-    timeBlock.removeClass('future')
-    timeBlock.removeClass('present')
-    timeBlock.addClass('past')
-  }}
-}
-checkHour()
 
 $(document).ready(function () {
   $('.saveBtn').on("click", function(){
     // window.alert('clicked')
-    var textInput = $('textarea').val();
+    var textInput = $(this).siblings('textarea').val();
     console.log(textInput)
-    var time = $(this).siblings(".hour").text();
+    var time = $(this).parent().attr('id');
     console.log(time);
-    localStorage.setItem(time, textInput)
+    localStorage.setItem(time, textInput);
+// var time = $(this).siblings(".hour").text();
+  })
+
+function checkHour(){
+  var timeB = $('.time-block');
+  var timeNow = dayjs().hour();
+ 
+  console.log(timeNow + " time now")
+  for(var i = 0; i < timeB.length; i ++){
+    console.log(timeB[i]);
+    var timeDiv = timeB[i];
+    var scheduleTime = parseInt($(timeB[i]).attr('id').split('-')[1]);
+    var time = timeB[i].getAttribute('id')
+    console.log(time)
+    var textInput = localStorage.getItem(time)
+    console.log(textInput)
+    timeDiv.children[1].val = textInput
+    // console.log(scheduleTime)
+    // console.log(timeNow)
+    
+  if (scheduleTime < timeNow) {
+    $(timeB[i]).removeClass("future");
+    $(timeB[i]).removeClass("present");
+    $(timeB[i]).addClass("past");
+  }
+  else if (scheduleTime === timeNow) {
+    $(timeB[i]).removeClass("past");
+    $(timeB[i]).removeClass("future");
+    $(timeB[i]).addClass("present");
+}
+  else {
+    $(timeB[i]).removeClass("present");
+    $(timeB[i]).removeClass("past");
+    $(timeB[i]).addClass("future");
+
+}
+  
+}}
+
+// $('#hour-12 .description').val(localStorage.getItem('hour-12'))
+$('`$(textInput)`')
+
+checkHour()
+});
+
+
+
+
+    
     // var scheduleTime = $(this).siblings('.hour').text().split[1];
     // console.log(scheduleTime)
-  });
+
   
   
-
-    function checkHour(){
-  
-    
-      if(currentTime > scheduleTime) {
-        $(this).removeClass('future')
-        $(this).removeClass('present')
-        console.log(currentTime)
-    }
-
-  }
-
-checkHour();
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.  
@@ -83,7 +95,7 @@ checkHour();
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+
 
 
 
