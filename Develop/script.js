@@ -3,13 +3,69 @@ $('#currentDay').text(topDate);
 
 var currentTime = dayjs().format('hh:mm:ss');
 $('#currentTime').text(currentTime);
+console.log("Current Time" + currentTime);
 
+// var time = $(this).siblings(".hour").text();
 
+$('body').css('margin-bottom', '50px');
+var scheduleTime = $().siblings('.hour').text().split['hour'];
+console.log(scheduleTime)
+
+var timeBlock = $('.time-block');
+
+function checkHour(){
+var timeB = $('.time-block');
+var timeNow = dayjs().hour();
+console.log(timeNow)
+for(var i = 0; i < timeB.length; i ++){
+  console.log(timeB[i]);
+  var timeDiv = timeB[i];
+  var scheduleTime = parseInt($(timeDiv).attr('id').split('-')[1]);
+  console.log(isNaN(currentTime))
+  
+  
+  if(timeNow > scheduleTime) {
+    console.log(timeNow, scheduleTime)
+    timeBlock.removeClass('future')
+    timeBlock.removeClass('present')
+    timeBlock.addClass('past')
+  }}
+}
+checkHour()
+
+$(document).ready(function () {
+  $('.saveBtn').on("click", function(){
+    // window.alert('clicked')
+    var textInput = $('textarea').val();
+    console.log(textInput)
+    var time = $(this).siblings(".hour").text();
+    console.log(time);
+    localStorage.setItem(time, textInput)
+    // var scheduleTime = $(this).siblings('.hour').text().split[1];
+    // console.log(scheduleTime)
+  });
+  
+  
+
+    function checkHour(){
+  
+    
+      if(currentTime > scheduleTime) {
+        $(this).removeClass('future')
+        $(this).removeClass('present')
+        console.log(currentTime)
+    }
+
+  }
+
+checkHour();
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(document).ready(function () {
-  // TODO: Add a listener for click events on the save button. This code should
+// in the html.  
+
+
+
+// TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
