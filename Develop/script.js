@@ -1,13 +1,18 @@
+// this uses day.js to retrieve the current date 
 var topDate = dayjs().format('MMM D, YYYY');
 $('#currentDay').text(topDate);
 
+// this grabs the current time in the day based on my location 
 var currentTime = dayjs().format('hh:mm:ss');
 $('#currentTime').text(currentTime);
 console.log("Current Time" + currentTime);
 
+// gave a little space on the bottom of the page 
 $('body').css('margin-bottom', '50px');
 
+// created a variable by grabbing the elements in html with the class of time-block 
 var timeBlock = $('.time-block');
+
 
 $(document).ready(function () {
   $('.saveBtn').on("click", function(){
@@ -20,10 +25,14 @@ $(document).ready(function () {
 // var time = $(this).siblings(".hour").text();
   })
 
+
+//the function to render color on the time slots based on the reference of the current time
+// this function also stores and retrieves the text input data from the user  
 function checkHour(){
   var timeB = $('.time-block');
   var timeNow = dayjs().hour();
  
+  // i leave console.logs in the code as a point of reference and to make sure things are working correctly 
   console.log(timeNow + " time now")
   for(var i = 0; i < timeB.length; i ++){
     console.log(timeB[i]);
@@ -37,6 +46,8 @@ function checkHour(){
     // console.log(scheduleTime)
     // console.log(timeNow)
     
+
+  // the conditional statement that deciphers what color each time block is 
   if (scheduleTime < timeNow) {
     $(timeB[i]).removeClass("future");
     $(timeB[i]).removeClass("present");
@@ -56,8 +67,17 @@ function checkHour(){
   
 }}
 
-// $('#hour-12 .description').val(localStorage.getItem('hour-12'))
-$('`$(textInput)`')
+// the code to retrieve the data from local storage and append it to the page 
+$('#hour-9 .description').val(localStorage.getItem('hour-9'))
+$('#hour-10 .description').val(localStorage.getItem('hour-10'))
+$('#hour-11 .description').val(localStorage.getItem('hour-11'))
+$('#hour-12 .description').val(localStorage.getItem('hour-12'))
+$('#hour-13 .description').val(localStorage.getItem('hour-13'))
+$('#hour-14 .description').val(localStorage.getItem('hour-14'))
+$('#hour-15 .description').val(localStorage.getItem('hour-15'))
+$('#hour-16 .description').val(localStorage.getItem('hour-16'))
+$('#hour-17 .description').val(localStorage.getItem('hour-17'))
+// $('`$(textInput)`')
 
 checkHour()
 });
@@ -65,9 +85,7 @@ checkHour()
 
 
 
-    
-    // var scheduleTime = $(this).siblings('.hour').text().split[1];
-    // console.log(scheduleTime)
+// !!------ Im leaving the text from the starter code to use as reference upon study-------!!
 
   
   
