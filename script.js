@@ -85,7 +85,7 @@ checkHour()
 
 
 
-// !!------ Im leaving the text from the starter code to use as reference upon study-------!!
+// !!--------- Im leaving the text from the starter code to use as reference upon
 
   
   
