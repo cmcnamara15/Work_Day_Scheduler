@@ -1,5 +1,7 @@
 # Work Day Scheduler
 
+### Deployed URL https://cmcnamara15.github.io/Work_Day_Scheduler/
+
 ## Description
 
 A simple calendar application that allows a user to save events for each hour of the day. The information input by the user is stored in and retrieved from local storage. This challenge was an exercise in using Third Party Apis
